@@ -5,22 +5,24 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useContext } from "react";
 import themeContext from "../../state/context/themeContext";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 import "./linkstyle.css";
+// import Copy from '../copy';
 
 const Link = () => {
   const a = useContext(themeContext);
 
   return (
     <>
+      <ToastContainer />
       <Bounce>
         <ParentWrapper>
           {linkData.map((item, index) => (
             <CustomDiv
               className="shadow"
+              contenteditable="true"
               props={a.darkMode ? themeData.light : themeData.dark}
-              onClick={() => {
-                window.open(item.link, "_blank");
-              }}
               key={index}
             >
               <LazyLoadImage
@@ -29,14 +31,25 @@ const Link = () => {
                 src={`https://ui-avatars.com/api/?rounded=true&name=${item.name}&background=random`}
                 alt="my_profile_image"
               />
-              <p className="text-center">{item.name}</p>
-              <button data-testid="ShareLink" class="sc-cBNfnY gSwncj share-link-icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class=" " role="img" aria-hidden="false" aria-labelledby="ltclid235093_title ">
-                      <title id="ltclid235093_title">Apple Share</title>
+              <p 
+              className="text-center"
+              onClick={() => {
+                window.open(item.link, "_blank");
+              }}
+              >
+                {item.name}
+              </p>
+              <button data-testid="ShareLink" class="sc-cBNfnY gSwncj share-link-icon" 
+              onClick={() => {
+                navigator.clipboard.writeText(item.link);
+                toast.success("Link copied");
+              }}>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="" role="img" aria-hidden="false" aria-labelledby="ltclid235093_title ">
+                      <title id="ltclid235093_title">Copy & Share</title>
                       <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6464 3.85353L11 4.20708L11.7071 3.49998L11.3536 3.14642L8.35355 0.146423H7.64645L4.64645 3.14642L4.29289 3.49998L5 4.20708L5.35355 3.85353L7.5 1.70708V9.49998V9.99998H8.5V9.49998V1.70708L10.6464 3.85353ZM1 5.5L1.5 5H4V6H2V15H14V6H12V5H14.5L15 5.5V15.5L14.5 16H1.5L1 15.5V5.5Z" fill="currentColor"></path>
                   </svg>
               </button>
-            </CustomDiv>
+            </CustomDiv>            
           ))}
         </ParentWrapper>
       </Bounce>
