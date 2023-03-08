@@ -54,6 +54,7 @@ const linkData = [
     name: "Hr-Maneja Demo",
     image:
       "",
+    video: "https://hrmaneja.com/"
   },
   {
     id: 5,
@@ -61,6 +62,7 @@ const linkData = [
     name: "iRUN HQ",
     image:
       "",
+    video: ""
   },
   {
     id: 6,
@@ -68,6 +70,7 @@ const linkData = [
     name: "Hr-Maneja",
     image:
       "",
+    video: ""
   },
   {
     id: 7,
@@ -75,6 +78,7 @@ const linkData = [
     name: "LinkedIn",
     image:
       "",
+    video: ""
   },
   {
     id: 8,
@@ -82,6 +86,7 @@ const linkData = [
     name: "Twitter",
     image:
       "",
+    video: ""
   },
   {
     id: 9,
@@ -89,6 +94,7 @@ const linkData = [
     name: "Instagram",
     image:
       "",
+    video: ""
   },
   {
     id: 10,
@@ -96,6 +102,7 @@ const linkData = [
     name: "Facebook",
     image:
       "",
+    video: ""
   }
 ];
 
